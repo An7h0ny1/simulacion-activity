@@ -1,0 +1,18 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ActivityEvent {
+  id        String   @id @default(uuid())
+  userId    String
+  event     String
+  timestamp DateTime @default(now())
+  detail    String?
+  teamId    String?
+  simulationId    String?
+}
